@@ -24,15 +24,17 @@ git init
 - 项目(仓库)级别`仅在当前本地库有效`
 
     ```
-    git config user.name tom  #设置用户名tom
-    git config user.email liu@qq.com #设置用户邮箱
+    git config user.name kcasual  #设置用户名tom
+    git config user.email kcasual@163.com #设置用户邮箱
     ```
+
+    信息保存位置：` .git/config 文件 ` 
 
 - 系统用户级别`仅在当前登录的操作系统用户有效`
 
   ```
-  git config --global user.name tom
-  git config --global user.email liu@qq.com
+  git config --global user.name kcasual
+  git config --global user.email kcasual@163.com
   ```
 
 > 仅仅加了一个 `--global`
@@ -53,6 +55,7 @@ git status   #查看工作区、暂存区状态
 
 ```
 git add fileName  #指定文件
+git add filename1 filename2 filename3 #添加多个文件
 git add . #所有
 说明：将工作区的文件添加到暂存区
 ```
@@ -60,8 +63,9 @@ git add . #所有
 #### 1.3.3 提交
 
 ```
-git commit -m 'commit message' fileName
-说明：将暂存区内容提交到本地库
+git commit  fileName -m "提交日志" 
+git commit -m "提交日志" fileName 
+说明：-m位置随意，将暂存区内容提交到本地库
 ```
 
 #### 1.3.4 查看历史记录
@@ -72,7 +76,7 @@ git reflog  #常用
 git log --greph #图形显示,更直观
 git log --pretty=oneline #漂亮一行显示
 git log --oneline #简洁显示
-说明：HEAD@{移动到当前版本需要多少步}
+说明：HEAD@{移动到当前版本需要多少步
 ```
 
 #### 1.3.5 前进后退
@@ -89,13 +93,13 @@ git log --oneline #简洁显示
   ```
   git reset --hard HEAD^
   例子：git reset --hard HEAD^^
-  注意：几个 ^ 表示后退几步
+  注意：几个 ^ 表示后退几个版本
   ```
 
 - 使用 **~** 符号`只能后退`
 
   ```
-  git reset --hard HEAD~n
+  git reset --hard HEAD~n #后退n个版本
   例子：git reset --hard HEAD~3
   ```
 
@@ -131,7 +135,7 @@ git diff  #不带文件名，则比较多个文件
 
 ### 2.2 分支管理
 
-`hot_fix` `master` `feature_x` `feature_y`
+`test` `master` 
 
 #### 2.2.1 什么是分支管理
 
@@ -154,7 +158,7 @@ git branch 分支名
 
 ~~~
 git branch
-git branch -v 
+git branch -v  #同时显示分支的当前版本
 ~~~
 
 - 切换分支
@@ -164,18 +168,18 @@ git checkout 分支名
 git checkout -b 分支名   #创建分支并直接切换到该分支
 ~~~
 
-- 合并分支`相当于把修改了的文件拉过来`
+- 合并分支
 
 ~~~
-git merge xxx
+git merge test(分支名)
 注意：合并分支的时候要明确谁谁合并
-	我在a分支里面修改了。要合并到master，就先切换到master，然后合并b
+	我在test分支里面修改了。要合并到master，就先切换到master，然后合并test
 ~~~
 
 - 删除分支
 
 ~~~
-git branch -d 分支名
+git branch -d test（分支名）
 ~~~
 
 
@@ -191,14 +195,13 @@ git branch -d 分支名
 
 ## Git 结合Github
 
-`别分手`  `别名 分支名`
-
 #### 1.1 创建远程库地址别名
 
 ~~~
 git remote -v  #查看远程地址别名
 git remote add 别名 远程地址 
-例子：git remote add origin https://xx
+例子：git remote add gof https://... #基于http协议
+	git remote add got_ssh git@github...#基于ssh
 ~~~
 
 #### 1.2 推送
@@ -208,7 +211,7 @@ git remote add 别名 远程地址
 ~~~
 git push 别名 分支名
 git push -u 别名 分支名    #-u指定默认主机
-例子：git push origin master
+例子：git push gof master
 ~~~
 
 #### 1.3 克隆
@@ -217,7 +220,7 @@ git push -u 别名 分支名    #-u指定默认主机
 
 ~~~
 git clone  远程地址
-例子：git clone https://xx
+例子：git clone https://...
 ~~~
 
 #### 1.4 拉取
@@ -335,3 +338,4 @@ GitFlow 有独立的分支，让发布迭代过程更流畅。
 安全可靠地管理大团队的开发者
 ```
 
+## Git结合idea
